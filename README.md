@@ -4,6 +4,26 @@
   Reykjavik University - School of Computer Science, Menntavegur 1, IS-101 Reykjavik, Iceland
 </i></p>
 
+## Table of Contents
+<!-- ⛔️ MD-MAGIC-EXAMPLE:START (TOC:collapse=true&collapseText=Click to expand) -->
+<details>
+<summary>Click to expand</summary>
+
+1. [Introduction](#1-introduction)
+2. [The Dataset](#2-the-dataset)
+3. [The Adjustments](#3-the-adjustments)
+    * [run.sh](#31-run.sh)
+    * [create_yesno_txt.pl](#32-local/create_yesno_txt.pl)
+		* [create_yesno_waves_test_train.pl](#33-local/create_yesno_txt.pl)
+		* [prepare_data.sh](#34-local/prepare_data.sh)
+		* [mfcc.conf](#35-conf/mfcc.conf)
+4. [Authors](#5-authors)
+5. [License](#6-license)
+6. [References](#7-references)
+
+</details>
+<!-- ⛔️ MD-MAGIC-EXAMPLE:END -->
+
 ## 1 Introduction
 A modified version of the [Kaldi-ASR yesno](https://github.com/kaldi-asr/kaldi/tree/master/egs/yesno) example project adjusted for Icelandic and for multiple speakers.
 
@@ -32,7 +52,7 @@ Summary:
 
 ## 3 The Adjustments
 
-### run.sh
+### 3.1 run.sh
 
 Edit following part in the file:
 
@@ -43,14 +63,14 @@ if [ ! -d waves_yesno ]; then
 fi
 ```
 
-We have our the dataset locally, so we dont have to fetch it from remote file host.
+We have our dataset locally, so we dont have to fetch it from a remote file host.
 
 Remember to re-compile the script.
 ```bash
 $ chmod 777 s5/run.sh
 ```
 
-### local/create_yesno_txt.pl
+### 3.2 local/create_yesno_txt.pl
 
 Add following code to the while loop:
 
@@ -61,7 +81,7 @@ Add following code to the while loop:
 This will remove the speaker Id from our filename when creating our data/{X}/text files.
 
 
-### local/create_yesno_waves_test_train.pl
+### 3.3 local/create_yesno_waves_test_train.pl
 
 Specify which speakers you want to have in the test set.
 
@@ -80,7 +100,7 @@ while ($l = <FL>)
 }
 ```
 
-### local/prepare_data.sh 
+### 3.4 local/prepare_data.sh 
 
 Edit the code so each utterece has it corresponding speaker id istead of global.
 
@@ -93,7 +113,7 @@ Remember to re-compile the script.
 $ chmod 777 s5/local/prepare_data.sh 
 ```
 
-### conf/mfcc.conf
+### 3.5 conf/mfcc.conf
 Set the correct sample-frequency configuration based on the waves_yesno .wav file format.
 
 ```bash
@@ -102,15 +122,11 @@ Set the correct sample-frequency configuration based on the waves_yesno .wav fil
 
 ### Done
 
-Now run run.sh file
+Now we should be able to run the run.sh file successfully.
 
 ```bash
+$ cd s5/
 $ bash run.sh
-```
-Expected Output:
-
-```bash
-
 ```
 
 ## 4 Authors
@@ -121,6 +137,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 6 References
 * [Kaldi-ASR](http://kaldi-asr.org/)
+* [Kaldi-ASR yesno](https://github.com/kaldi-asr/kaldi/tree/master/egs/yesno)
 
 <p align="center">
 🌟 PLEASE STAR THIS REPO IF YOU FOUND SOMETHING INTERESTING 🌟
