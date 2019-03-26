@@ -58,8 +58,7 @@ Edit following part in the file:
 
 ```bash
 if [ ! -d waves_yesno ]; then
-  wget waves_yesno.tar.gz || exit 1;
-  tar -xvzf waves_yesno.tar.gz || exit 1;
+  tar -xf waves_yesno.tar.gz || exit 1;
 fi
 ```
 
@@ -127,6 +126,12 @@ Now we should be able to run the run.sh file successfully.
 ```bash
 $ cd s5/
 $ bash run.sh
+```
+
+Expected Results:
+
+```bash
+%WER 12.50 [ 12 / 96, 9 ins, 3 del, 0 sub ] exp/mono0a/decode_test_yesno/wer_13_1.0
 ```
 
 ## 4 Authors
